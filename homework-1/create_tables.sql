@@ -18,6 +18,6 @@ CREATE TABLE orders(
 	order_id int PRIMARY KEY,
 	customer_id varchar REFERENCES customers(customer_id),
 	employee_id int REFERENCES employees(employee_id),
-	order_data date NOT NULL,
+	order_date date NOT NULL,
 	ship_city varchar(100) NOT NULL
 );
