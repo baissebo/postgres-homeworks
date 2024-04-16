@@ -6,7 +6,12 @@ import csv
 
 
 def main():
-    conn = psycopg2.connect(host='localhost', database='north', user='postgres', password='basadannih')
+    db_host = os.environ.get('DB_HOST')
+    db_name = os.environ.get('DB_NAME')
+    db_user = os.environ.get('DB_USER')
+    db_password = os.environ.get('DB_PASSWORD')
+
+    conn = psycopg2.connect(host=db_host, database=db_name, user=db_user, password=db_password)
     try:
         with conn:
             with conn.cursor() as cur:
@@ -30,7 +35,7 @@ def main():
                             for row in csv.reader(csv_file):
                                 cur.execute("INSERT INTO orders VALUES (%s, %s, %s, %s, %s)", row)
     except psycopg2.Error as e:
-        print("Ошибка выполнения операции", e)
+        print("Ошибка выполнения операции:", e)
 
     finally:
         conn.close()
