@@ -44,9 +44,9 @@ def create_database(params, db_name) -> None:
     """Создает новую базу данных."""
     pass
 
+
 def execute_sql_script(cur, script_file) -> None:
     """Выполняет скрипт из файла для заполнения БД данными."""
-
 
 
 def create_suppliers_table(cur) -> None:
